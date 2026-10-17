@@ -1,30 +1,27 @@
-import Nav from "./components/Nav";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Skills from "./components/Skills";
-import Projects from "./components/Projects";
-import Experience from "./components/Experience";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
-import CursorGlow from "./components/CursorGlow";
-import FloatingBlobs from "./components/FloatingBlobs";
-import "./App.css";
+import Header from './components/layout/Header'
+import Footer from './components/layout/Footer'
+import Hero from './components/sections/Hero'
+import About from './components/sections/About'
+import Skills from './components/sections/Skills'
+import Experience from './components/sections/Experience'
+import Projects from './components/sections/Projects'
+import Contact from './components/sections/Contact'
 
 function App() {
   return (
-    <>
-      <CursorGlow />
-      <FloatingBlobs />
-      <Nav />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Experience />
-      <Contact />
+    <div className="min-h-screen bg-bg-primary">
+      <Header />
+      <main>
+        <Hero />
+        <About />
+        <Skills />
+        <Experience />
+        <Projects />
+        <Contact />
+      </main>
       <Footer />
-    </>
-  );
+    </div>
+  )
 }
 
-export default App;
+export default App

@@ -1,0 +1,8 @@
+// src/data/index.ts
+
+export * from './profile';
+export * from './skills';
+export * from './experience';
+export * from './projects';
+export * from './contact';
+export * from './education';
