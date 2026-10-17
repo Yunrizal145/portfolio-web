@@ -2,21 +2,26 @@
 
 import { contact } from '../../data/contact';
 import { Button } from '../ui';
-import WavyDivider from '../shared/WavyDivider';
+import SectionDivider from '../shared/SectionDivider';
 import { FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
 import { MdEmail, MdPhone, MdLocationOn } from 'react-icons/md';
 
 export default function Contact() {
   return (
     <>
-      <WavyDivider />
+      <SectionDivider variant="dark-to-light" />
       
-      <section id="contact" className="section-padding">
+      <section id="contact" className="section-padding bg-bg-light text-text-dark">
         <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-h2 font-bold mb-4">Let's Work Together</h2>
-            <p className="text-body-lg text-text-secondary max-w-2xl mx-auto">
-              Buka untuk kolaborasi dan opportunity baru. Mari diskusikan project Anda!
+          <div className="text-center mb-16">
+            <span className="px-3.5 py-1.5 rounded-full bg-blue-100 text-accent-primary text-xs font-semibold tracking-wider uppercase">
+              Get In Touch
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold font-serif mt-4 mb-4">
+              Let's Work Together
+            </h2>
+            <p className="text-text-dark-muted text-base md:text-lg max-w-2xl mx-auto font-light">
+              Buka untuk kolaborasi, kesempatan karir baru, atau diskusi mengenai project sistem perbankan & backend.
             </p>
           </div>
 
@@ -26,40 +31,46 @@ export default function Contact() {
               {/* Email */}
               <a 
                 href={`mailto:${contact.email}`}
-                className="bg-bg-secondary rounded-card p-6 hover:shadow-card-hover transition-all duration-300 group"
+                className="light-card rounded-2xl p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
               >
                 <div className="flex items-center gap-4 mb-3">
-                  <div className="text-accent-primary text-3xl group-hover:text-accent-light transition-colors">
+                  <div className="w-12 h-12 rounded-xl bg-blue-50 text-accent-primary flex items-center justify-center text-2xl group-hover:bg-accent-primary group-hover:text-white transition-colors">
                     <MdEmail />
                   </div>
-                  <h3 className="text-h4 font-semibold">Email</h3>
+                  <div>
+                    <h3 className="text-sm font-bold text-slate-900">Email</h3>
+                    <p className="text-text-dark-muted text-xs break-all">{contact.email}</p>
+                  </div>
                 </div>
-                <p className="text-text-secondary text-sm">{contact.email}</p>
               </a>
 
               {/* Phone */}
               <a 
                 href={`tel:${contact.phone}`}
-                className="bg-bg-secondary rounded-card p-6 hover:shadow-card-hover transition-all duration-300 group"
+                className="light-card rounded-2xl p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
               >
                 <div className="flex items-center gap-4 mb-3">
-                  <div className="text-accent-primary text-3xl group-hover:text-accent-light transition-colors">
+                  <div className="w-12 h-12 rounded-xl bg-blue-50 text-accent-primary flex items-center justify-center text-2xl group-hover:bg-accent-primary group-hover:text-white transition-colors">
                     <MdPhone />
                   </div>
-                  <h3 className="text-h4 font-semibold">Phone</h3>
+                  <div>
+                    <h3 className="text-sm font-bold text-slate-900">Phone</h3>
+                    <p className="text-text-dark-muted text-xs">{contact.phone}</p>
+                  </div>
                 </div>
-                <p className="text-text-secondary text-sm">{contact.phone}</p>
               </a>
 
               {/* Location */}
-              <div className="bg-bg-secondary rounded-card p-6">
+              <div className="light-card rounded-2xl p-6">
                 <div className="flex items-center gap-4 mb-3">
-                  <div className="text-accent-primary text-3xl">
+                  <div className="w-12 h-12 rounded-xl bg-blue-50 text-accent-primary flex items-center justify-center text-2xl">
                     <MdLocationOn />
                   </div>
-                  <h3 className="text-h4 font-semibold">Location</h3>
+                  <div>
+                    <h3 className="text-sm font-bold text-slate-900">Location</h3>
+                    <p className="text-text-dark-muted text-xs">{contact.location}</p>
+                  </div>
                 </div>
-                <p className="text-text-secondary text-sm">{contact.location}</p>
               </div>
 
               {/* LinkedIn */}
@@ -67,15 +78,17 @@ export default function Contact() {
                 href={contact.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-bg-secondary rounded-card p-6 hover:shadow-card-hover transition-all duration-300 group"
+                className="light-card rounded-2xl p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
               >
                 <div className="flex items-center gap-4 mb-3">
-                  <div className="text-accent-primary text-3xl group-hover:text-accent-light transition-colors">
+                  <div className="w-12 h-12 rounded-xl bg-blue-50 text-accent-primary flex items-center justify-center text-2xl group-hover:bg-accent-primary group-hover:text-white transition-colors">
                     <FaLinkedin />
                   </div>
-                  <h3 className="text-h4 font-semibold">LinkedIn</h3>
+                  <div>
+                    <h3 className="text-sm font-bold text-slate-900">LinkedIn</h3>
+                    <p className="text-text-dark-muted text-xs">Connect with me</p>
+                  </div>
                 </div>
-                <p className="text-text-secondary text-sm">Connect with me</p>
               </a>
 
               {/* GitHub */}
@@ -84,15 +97,17 @@ export default function Contact() {
                   href={contact.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-bg-secondary rounded-card p-6 hover:shadow-card-hover transition-all duration-300 group"
+                  className="light-card rounded-2xl p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
                 >
                   <div className="flex items-center gap-4 mb-3">
-                    <div className="text-accent-primary text-3xl group-hover:text-accent-light transition-colors">
+                    <div className="w-12 h-12 rounded-xl bg-blue-50 text-accent-primary flex items-center justify-center text-2xl group-hover:bg-accent-primary group-hover:text-white transition-colors">
                       <FaGithub />
                     </div>
-                    <h3 className="text-h4 font-semibold">GitHub</h3>
+                    <div>
+                      <h3 className="text-sm font-bold text-slate-900">GitHub</h3>
+                      <p className="text-text-dark-muted text-xs">View my repositories</p>
+                    </div>
                   </div>
-                  <p className="text-text-secondary text-sm">View my code</p>
                 </a>
               )}
 
@@ -102,15 +117,17 @@ export default function Contact() {
                   href={contact.twitter}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-bg-secondary rounded-card p-6 hover:shadow-card-hover transition-all duration-300 group"
+                  className="light-card rounded-2xl p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
                 >
                   <div className="flex items-center gap-4 mb-3">
-                    <div className="text-accent-primary text-3xl group-hover:text-accent-light transition-colors">
+                    <div className="w-12 h-12 rounded-xl bg-blue-50 text-accent-primary flex items-center justify-center text-2xl group-hover:bg-accent-primary group-hover:text-white transition-colors">
                       <FaTwitter />
                     </div>
-                    <h3 className="text-h4 font-semibold">Twitter</h3>
+                    <div>
+                      <h3 className="text-sm font-bold text-slate-900">Twitter</h3>
+                      <p className="text-text-dark-muted text-xs">Follow updates</p>
+                    </div>
                   </div>
-                  <p className="text-text-secondary text-sm">Follow me</p>
                 </a>
               )}
             </div>
@@ -120,9 +137,9 @@ export default function Contact() {
               <Button 
                 variant="primary"
                 href={`mailto:${contact.email}`}
-                className="px-8"
+                className="px-8 py-4 shadow-xl shadow-blue-500/20 text-base"
               >
-                Send Me an Email
+                Send Me an Email ✉️
               </Button>
             </div>
           </div>
