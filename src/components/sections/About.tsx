@@ -1,86 +1,74 @@
 // src/components/sections/About.tsx
 
 import { profile } from '../../data/profile';
-import { StatCard } from '../ui';
-import WavyDivider from '../shared/WavyDivider';
+import SectionDivider from '../shared/SectionDivider';
 
 export default function About() {
-  const { bio, quote } = profile;
+  const { bio } = profile;
 
   return (
     <>
-      <WavyDivider />
+      <SectionDivider variant="dark-to-light" />
       
-      <section id="about" className="section-padding">
+      <section id="about" className="section-padding bg-bg-light text-text-dark">
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Text Content */}
+            {/* Left Column: Portrait & Visual */}
+            <div className="flex flex-col items-center">
+              <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden light-card p-2 bg-gradient-to-tr from-accent-primary to-accent-light shadow-2xl">
+                <div className="w-full h-full rounded-full bg-slate-200 flex items-center justify-center overflow-hidden">
+                  <div className="text-8xl">👨‍💻</div>
+                </div>
+              </div>
+              <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-accent-primary text-sm font-medium">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                Available for New Projects
+              </div>
+            </div>
+
+            {/* Right Column: Content */}
             <div className="space-y-6">
-              <h2 className="text-h2 font-bold mb-6">About Me</h2>
+              <span className="px-3 py-1 rounded-full bg-blue-100 text-accent-primary text-xs font-semibold tracking-wider uppercase">
+                About Me
+              </span>
+              
+              <h2 className="text-3xl md:text-4xl font-bold font-serif leading-tight">
+                Code is my medium. <span className="text-accent-primary italic">Reliability is my superpower.</span>
+              </h2>
               
               {bio.map((paragraph, idx) => (
-                <p key={idx} className="text-body text-text-secondary">
+                <p key={idx} className="text-text-dark-muted text-base md:text-lg leading-relaxed">
                   {paragraph}
                 </p>
               ))}
               
-              <div className="mt-8 p-6 bg-bg-secondary rounded-card border-l-4 border-accent-primary">
-                <p className="text-body-lg text-text-secondary italic">
-                  "{quote}"
-                </p>
-              </div>
-            </div>
-
-            {/* Stats & Image Section */}
-            <div className="space-y-8">
-              {/* Profile Image Placeholder */}
-              <div className="bg-bg-secondary rounded-card p-8 flex flex-col items-center text-center">
-                <div className="w-32 h-32 rounded-full bg-accent-primary opacity-20 mb-6 flex items-center justify-center">
-                  <div className="text-4xl">👨‍💻</div>
+              {/* Stats Row */}
+              <div className="grid grid-cols-3 gap-4 pt-6 border-t border-border-light">
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-100">
+                  <div className="text-2xl md:text-3xl font-bold text-accent-primary mb-1">
+                    {profile.stats.yearsExperience}
+                  </div>
+                  <p className="text-text-dark-muted text-xs md:text-sm">Years Experience</p>
                 </div>
-                
-                <h3 className="text-h3 font-bold mb-2">{profile.name}</h3>
-                <p className="text-text-secondary mb-6">{profile.title}</p>
-                
-                {/* Stats */}
-                <div className="grid grid-cols-3 gap-4 w-full">
-                  <StatCard 
-                    value={profile.stats.yearsExperience}
-                    label="Years Experience"
-                  />
-                  <StatCard 
-                    value={profile.stats.clientsCount}
-                    label="Clients"
-                  />
-                  <StatCard 
-                    value={profile.stats.projectsCount}
-                    label="Projects"
-                  />
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-100">
+                  <div className="text-2xl md:text-3xl font-bold text-accent-primary mb-1">
+                    {profile.stats.clientsCount}
+                  </div>
+                  <p className="text-text-dark-muted text-xs md:text-sm">Clients</p>
                 </div>
-              </div>
-
-              {/* Education/Certification Summary */}
-              <div className="bg-bg-secondary rounded-card p-6">
-                <h3 className="text-h4 font-semibold mb-4">Education & Certification</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-accent-primary rounded-full"></span>
-                    <span className="text-text-secondary">Bachelor in Informatics Engineering</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-accent-primary rounded-full"></span>
-                    <span className="text-text-secondary">Back-End Developer Certification</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-accent-primary rounded-full"></span>
-                    <span className="text-text-secondary">JavaScript Programming Fundamentals</span>
-                  </li>
-                </ul>
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-100">
+                  <div className="text-2xl md:text-3xl font-bold text-accent-primary mb-1">
+                    {profile.stats.projectsCount}
+                  </div>
+                  <p className="text-text-dark-muted text-xs md:text-sm">Projects</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      <SectionDivider variant="light-to-dark" />
     </>
   );
 }
