@@ -2,56 +2,57 @@
 
 import { useState } from 'react';
 import { projects } from '../../data/projects';
-import { Badge, Button, Modal } from '../ui';
-import WavyDivider from '../shared/WavyDivider';
+import { Button, Modal } from '../ui';
 import type { Project } from '../../data/projects';
 
 function ProjectCard({ project, onClick }: { project: Project; onClick: () => void }) {
   return (
     <div 
-      className="group bg-bg-secondary rounded-card overflow-hidden cursor-pointer hover:shadow-card-hover transition-all duration-300"
+      className="glass-card rounded-2xl overflow-hidden cursor-pointer group transition-all duration-300 flex flex-col justify-between"
       onClick={onClick}
     >
-      {/* Project Image */}
-      <div className="aspect-video bg-bg-tertiary relative overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-6xl opacity-50">🏦</div>
-        </div>
+      {/* Project Banner / Thumbnail */}
+      <div className="aspect-video bg-gradient-to-br from-blue-900/40 to-slate-900 relative overflow-hidden flex items-center justify-center border-b border-border-subtle">
+        <div className="text-6xl group-hover:scale-110 transition-transform duration-300">🏦</div>
         
-        {/* Hover Overlay */}
-        <div className="absolute inset-0 bg-accent-primary bg-opacity-0 group-hover:bg-opacity-90 transition-all duration-300 flex items-center justify-center">
-          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <Button variant="secondary" className="bg-white text-accent-primary border-white hover:bg-opacity-90">
-              View Details
-            </Button>
-          </div>
+        <div className="absolute inset-0 bg-accent-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <span className="px-4 py-2 rounded-lg bg-white text-accent-primary font-bold text-sm shadow-lg">
+            View Details →
+          </span>
         </div>
+
+        {project.featured && (
+          <span className="absolute top-3 right-3 px-3 py-1 rounded-full bg-accent-primary text-white text-xs font-semibold shadow">
+            Featured
+          </span>
+        )}
       </div>
 
-      {/* Project Info */}
-      <div className="p-6">
-        <div className="flex items-center gap-2 mb-2">
-          <span className="text-xs text-text-muted">{project.year}</span>
-          {project.featured && (
-            <span className="px-2 py-1 text-xs bg-accent-primary rounded-full text-white">Featured</span>
-          )}
+      {/* Content */}
+      <div className="p-6 space-y-4">
+        <div className="flex items-center justify-between">
+          <span className="text-xs font-mono text-accent-light">{project.year}</span>
         </div>
-        
-        <h3 className="text-h4 font-bold mb-2 group-hover:text-accent-primary transition-colors">
+
+        <h3 className="text-xl font-bold group-hover:text-accent-light transition-colors">
           {project.title}
         </h3>
-        
-        <p className="text-text-secondary text-sm mb-4 line-clamp-2">
+
+        <p className="text-text-secondary text-sm line-clamp-2 leading-relaxed">
           {project.shortDescription}
         </p>
 
-        {/* Tech Stack */}
-        <div className="flex flex-wrap gap-2">
+        {/* Tech Stack badges */}
+        <div className="flex flex-wrap gap-2 pt-2">
           {project.technologies.slice(0, 3).map((tech) => (
-            <Badge key={tech} text={tech} variant="tech" />
+            <span key={tech} className="px-2.5 py-1 rounded-md bg-bg-tertiary text-text-secondary text-xs font-medium">
+              {tech}
+            </span>
           ))}
           {project.technologies.length > 3 && (
-            <span className="text-xs text-text-muted">+{project.technologies.length - 3} more</span>
+            <span className="px-2.5 py-1 rounded-md bg-bg-tertiary text-text-muted text-xs">
+              +{project.technologies.length - 3}
+            </span>
           )}
         </div>
       </div>
@@ -59,71 +60,51 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
   );
 }
 
-function ProjectDetail({ project }: { project: Project; onClose: () => void }) {
+function ProjectDetail({ project }: { project: Project }) {
   return (
-    <div>
-      {/* Header */}
-      <div className="mb-6">
+    <div className="space-y-6 text-text-primary">
+      <div>
         <div className="flex items-center gap-3 mb-2">
-          <span className="text-sm text-text-muted">{project.year}</span>
+          <span className="text-xs font-mono text-accent-light">{project.year}</span>
           {project.featured && (
-            <span className="px-3 py-1 text-sm bg-accent-primary rounded-full text-white">Featured</span>
+            <span className="px-3 py-1 rounded-full bg-accent-primary text-white text-xs font-semibold">
+              Featured Project
+            </span>
           )}
         </div>
-        <h2 className="text-h2 font-bold mb-2">{project.title}</h2>
+        <h2 className="text-2xl md:text-3xl font-bold">{project.title}</h2>
       </div>
 
-      {/* Image Gallery */}
-      <div className="aspect-video bg-bg-tertiary rounded-card mb-6 flex items-center justify-center">
-        <div className="text-8xl opacity-50">🏦</div>
+      <div className="aspect-video bg-bg-tertiary rounded-xl flex items-center justify-center border border-border-subtle">
+        <div className="text-8xl">🏦</div>
       </div>
 
-      {/* Content */}
-      <div className="space-y-6">
-        {/* Description */}
-        <div>
-          <h3 className="text-h4 font-semibold mb-3">About Project</h3>
-          <p className="text-text-secondary text-body">{project.fullDescription}</p>
-        </div>
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold text-accent-light">Overview</h3>
+        <p className="text-text-secondary text-sm md:text-base leading-relaxed">{project.fullDescription}</p>
+      </div>
 
-        {/* Highlights */}
-        <div>
-          <h3 className="text-h4 font-semibold mb-3">Key Achievements</h3>
-          <ul className="space-y-2">
-            {project.highlights.map((highlight, idx) => (
-              <li key={idx} className="flex items-start gap-3">
-                <span className="text-accent-primary mt-1">✓</span>
-                <span className="text-text-secondary">{highlight}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold text-accent-light">Key Achievements</h3>
+        <ul className="space-y-2">
+          {project.highlights.map((item, idx) => (
+            <li key={idx} className="flex items-start gap-2.5 text-sm text-text-secondary">
+              <span className="text-accent-light font-bold mt-0.5">✓</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-        {/* Technologies */}
-        <div>
-          <h3 className="text-h4 font-semibold mb-3">Technologies Used</h3>
-          <div className="flex flex-wrap gap-2">
-            {project.technologies.map((tech) => (
-              <Badge key={tech} text={tech} variant="tech-lg" />
-            ))}
-          </div>
+      <div className="space-y-3">
+        <h3 className="text-lg font-semibold text-accent-light">Technologies Used</h3>
+        <div className="flex flex-wrap gap-2">
+          {project.technologies.map((tech) => (
+            <span key={tech} className="px-3 py-1 rounded-lg bg-bg-tertiary text-accent-light text-xs font-medium border border-border-subtle">
+              {tech}
+            </span>
+          ))}
         </div>
-
-        {/* Links */}
-        {(project.liveUrl || project.githubUrl) && (
-          <div className="flex gap-4 pt-4">
-            {project.liveUrl && (
-              <Button variant="primary" href={project.liveUrl}>
-                View Live →
-              </Button>
-            )}
-            {project.githubUrl && (
-              <Button variant="secondary" href={project.githubUrl}>
-                View Code →
-              </Button>
-            )}
-          </div>
-        )}
       </div>
     </div>
   );
@@ -137,55 +118,50 @@ export default function Projects() {
   const displayProjects = showAll ? projects : featuredProjects;
 
   return (
-    <>
-      <WavyDivider />
-      
-      <section id="projects" className="section-padding">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-h2 font-bold mb-4">Portfolio Projects</h2>
-            <p className="text-body-lg text-text-secondary max-w-2xl mx-auto">
-              Professional projects dalam backend development untuk banking dan enterprise systems
-            </p>
-          </div>
-
-          {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 gap-8 mb-8">
-            {displayProjects.map((project) => (
-              <ProjectCard 
-                key={project.id}
-                project={project}
-                onClick={() => setSelectedProject(project)}
-              />
-            ))}
-          </div>
-
-          {/* Show More Button */}
-          {projects.length > 4 && !showAll && (
-            <div className="text-center">
-              <Button 
-                variant="secondary"
-                onClick={() => setShowAll(true)}
-              >
-                View All Projects ({projects.length})
-              </Button>
-            </div>
-          )}
+    <section id="projects" className="section-padding bg-bg-primary relative">
+      <div className="container-custom">
+        <div className="text-center mb-16">
+          <span className="px-3.5 py-1.5 rounded-full glass-card text-xs font-semibold tracking-wider text-accent-light uppercase">
+            Portfolio Showcase
+          </span>
+          <h2 className="text-3xl md:text-4xl font-extrabold mt-4 mb-4">Featured Works</h2>
+          <p className="text-text-secondary text-base md:text-lg max-w-2xl mx-auto font-light">
+            Solusi digital dan distributed system berstandar tinggi yang telah diimplementasikan.
+          </p>
         </div>
-      </section>
 
-      {/* Project Detail Modal */}
+        {/* Grid */}
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+          {displayProjects.map((project) => (
+            <ProjectCard 
+              key={project.id}
+              project={project}
+              onClick={() => setSelectedProject(project)}
+            />
+          ))}
+        </div>
+
+        {/* View All Button */}
+        {projects.length > 4 && !showAll && (
+          <div className="text-center">
+            <Button 
+              variant="secondary"
+              onClick={() => setShowAll(true)}
+              className="border-accent-primary text-accent-light hover:bg-accent-primary hover:text-white"
+            >
+              Explore All Projects ({projects.length})
+            </Button>
+          </div>
+        )}
+      </div>
+
+      {/* Modal */}
       <Modal 
         isOpen={selectedProject !== null}
         onClose={() => setSelectedProject(null)}
       >
-        {selectedProject && (
-          <ProjectDetail 
-            project={selectedProject}
-            onClose={() => setSelectedProject(null)}
-          />
-        )}
+        {selectedProject && <ProjectDetail project={selectedProject} />}
       </Modal>
-    </>
+    </section>
   );
 }

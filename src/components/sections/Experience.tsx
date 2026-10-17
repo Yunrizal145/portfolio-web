@@ -1,89 +1,88 @@
 // src/components/sections/Experience.tsx
 
 import { experiences } from '../../data/experience';
-import { Badge } from '../ui';
-import WavyDivider from '../shared/WavyDivider';
+import SectionDivider from '../shared/SectionDivider';
 
 export default function Experience() {
   return (
     <>
-      <WavyDivider />
+      <SectionDivider variant="dark-to-light" />
       
-      <section id="experience" className="section-padding">
+      <section id="experience" className="section-padding bg-bg-light text-text-dark">
         <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-h2 font-bold mb-4">Work Experience</h2>
-            <p className="text-body-lg text-text-secondary max-w-2xl mx-auto">
-              Professional journey dalam backend development dan system architecture
+          <div className="text-center mb-16">
+            <span className="px-3.5 py-1.5 rounded-full bg-blue-100 text-accent-primary text-xs font-semibold tracking-wider uppercase">
+              Career Roadmap
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold font-serif mt-4 mb-4">
+              The Journey That Shaped Me
+            </h2>
+            <p className="text-text-dark-muted text-base md:text-lg max-w-2xl mx-auto font-light">
+              Pengalaman profesional menangani sistem perbankan skala nasional dan layanan publik.
             </p>
           </div>
 
-          {/* Timeline */}
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-0 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-accent-primary opacity-20"></div>
+          {/* Timeline Container */}
+          <div className="max-w-4xl mx-auto relative">
+            {/* Center Line (Desktop) / Left Line (Mobile) */}
+            <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-1 bg-blue-200"></div>
 
-            {/* Experience Items */}
             <div className="space-y-12">
               {experiences.map((exp, index) => (
                 <div 
                   key={exp.id} 
-                  className={`relative flex flex-col md:flex-row gap-8 ${
-                    index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                  className={`relative flex flex-col md:flex-row gap-8 items-center ${
+                    index % 2 === 0 ? 'md:flex-row-reverse' : ''
                   }`}
                 >
-                  {/* Timeline Dot */}
-                  <div className="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-accent-primary rounded-full border-4 border-bg-primary z-10"></div>
+                  {/* Timeline Node Dot */}
+                  <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-6 h-6 bg-accent-primary rounded-full border-4 border-white shadow-md z-10"></div>
 
-                  {/* Content */}
-                  <div className={`ml-8 md:ml-0 md:w-1/2 ${
-                    index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12 md:text-left'
-                  }`}>
-                    <div className="bg-bg-secondary rounded-card p-6">
-                      {/* Date Badge */}
-                      <div className={`mb-4 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
-                        <span className="inline-block px-4 py-2 bg-bg-tertiary rounded-full text-sm text-accent-primary font-semibold">
+                  {/* Content Card */}
+                  <div className="w-full md:w-1/2 pl-12 md:pl-0 md:px-8">
+                    <div className="light-card p-6 md:p-8 rounded-2xl relative group hover:border-accent-primary/50 transition-all duration-300">
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="px-3 py-1 rounded-full bg-blue-50 text-accent-primary text-xs font-bold">
                           {exp.startDate} — {exp.endDate}
                         </span>
                       </div>
 
-                      {/* Job Details */}
-                      <h3 className="text-h3 font-bold mb-2">{exp.position}</h3>
-                      <p className="text-accent-light text-lg font-medium mb-4">{exp.company}</p>
-                      <p className="text-text-secondary text-body mb-4">{exp.description}</p>
+                      <h3 className="text-xl font-bold text-slate-900 mb-1">{exp.position}</h3>
+                      <p className="text-accent-primary font-semibold text-sm mb-4">{exp.company}</p>
+                      
+                      <p className="text-text-dark-muted text-sm mb-6 leading-relaxed">
+                        {exp.description}
+                      </p>
 
-                      {/* Achievements */}
-                      <div className="mb-4">
-                        <h4 className="text-sm font-semibold text-text-primary mb-2">Key Achievements:</h4>
-                        <ul className={`space-y-2 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
-                          {exp.achievements.slice(0, 3).map((achievement, idx) => (
-                            <li key={idx} className="text-text-secondary text-sm flex items-start gap-2">
-                              <span className="text-accent-primary mt-1">•</span>
-                              <span>{achievement}</span>
+                      <div className="space-y-2 mb-6">
+                        <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Key Achievements:</p>
+                        <ul className="space-y-1.5">
+                          {exp.achievements.map((item, idx) => (
+                            <li key={idx} className="text-xs text-slate-600 flex items-start gap-2">
+                              <span className="text-accent-primary font-bold">▪</span>
+                              <span>{item}</span>
                             </li>
                           ))}
                         </ul>
                       </div>
 
-                      {/* Technologies */}
-                      <div className={`flex flex-wrap gap-2 ${
-                        index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'
-                      }`}>
+                      <div className="flex flex-wrap gap-1.5 pt-4 border-t border-slate-100">
                         {exp.technologies.map((tech) => (
-                          <Badge key={tech} text={tech} variant="tech" />
+                          <span key={tech} className="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-xs font-medium">
+                            {tech}
+                          </span>
                         ))}
                       </div>
                     </div>
                   </div>
-
-                  {/* Empty space for alternating layout */}
-                  <div className="hidden md:block md:w-1/2"></div>
                 </div>
               ))}
             </div>
           </div>
         </div>
       </section>
+
+      <SectionDivider variant="light-to-dark" />
     </>
   );
 }
