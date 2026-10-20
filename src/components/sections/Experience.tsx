@@ -1,10 +1,14 @@
 // src/components/sections/Experience.tsx
 
 import { experiences } from '../../data/experience';
+import SectionDivider from '../shared/SectionDivider';
 
 export default function Experience() {
     return (
-        <section id="experience" className="section-padding relative overflow-hidden bg-[#0f1117]">
+        <>
+        <SectionDivider variant="dark-to-light" />
+        
+    <section id="experience" className="section-padding relative overflow-hidden bg-bg-light text-text-dark">
             <div className="container-custom">
                 {/* Section Header */}
                 <div className="mb-12">
@@ -125,5 +129,8 @@ export default function Experience() {
                 </div>
             </div>
         </section>
+
+      <SectionDivider variant="light-to-dark" />
+        </>
     );
 }

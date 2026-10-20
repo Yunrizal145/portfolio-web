@@ -1,10 +1,13 @@
 // src/components/sections/Skills.tsx
 
 import { skillTags } from '../../data/skills';
+import SectionDivider from '../shared/SectionDivider';
 
 export default function Skills() {
     return (
-        <section id="skills" className="section-padding relative overflow-hidden bg-[#0f1117]">
+        <>
+        <SectionDivider variant="light-to-dark" />
+        <section id="skills" className="section-padding relative overflow-hidden bg-bg-primary">
             <div className="container-custom">
                 {/* Section Header */}
                 <div className="mb-16">
@@ -233,5 +236,8 @@ public class HighThroughputTransactionController {
                 </div>
             </div>
         </section>
+
+      <SectionDivider variant="dark-to-light" />
+    </>
     );
 }

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { projects } from '../../data/projects';
 import { Modal } from '../ui';
+import SectionDivider from '../shared/SectionDivider';
 import type { Project } from '../../data/projects';
 
 function ProjectDetail({ project }: { project: Project }) {
@@ -59,7 +60,10 @@ export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <section id="projects" className="section-padding relative overflow-hidden bg-[#0f1117]">
+    <>
+    <SectionDivider variant="light-to-dark" />
+    
+    <section id="projects" className="section-padding relative overflow-hidden bg-bg-primary">
       <div className="container-custom">
         {/* Section Header */}
         <div className="mb-12">
@@ -176,5 +180,8 @@ export default function Projects() {
         {selectedProject && <ProjectDetail project={selectedProject} />}
       </Modal>
     </section>
+
+      <SectionDivider variant="dark-to-light" />
+    </>
   );
 }

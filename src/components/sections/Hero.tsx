@@ -2,7 +2,7 @@
 
 export default function Hero() {
     return (
-        <section id="hero" className="section-padding relative overflow-hidden bg-[#0f1117]">
+        <section id="hero" className="section-padding relative overflow-hidden bg-bg-primary">
             {/* Background Glow Effect */}
             <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#3b82f6] opacity-10 rounded-full blur-[150px] pointer-events-none"></div>
 

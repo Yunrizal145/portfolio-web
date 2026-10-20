@@ -1,10 +1,14 @@
 // src/components/sections/About.tsx
 
 import { profile } from "../../data/profile";
+import SectionDivider from "../shared/SectionDivider";
 
 export default function About() {
     return (
-        <section id="about" className="section-padding relative overflow-hidden bg-[#0f1117]">
+        <>
+      <SectionDivider variant="dark-to-light" />
+      
+    <section id="about" className="section-padding relative overflow-hidden bg-bg-light text-text-dark">
             <div className="container-custom">
                 <div className="grid lg:grid-cols-[60%_38%] gap-12">
                     {/* Left Column: Content */}
@@ -203,5 +207,8 @@ export default function About() {
                 </div>
             </div>
         </section>
+
+      <SectionDivider variant="light-to-dark" />
+    </>
     );
 }

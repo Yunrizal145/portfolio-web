@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { contact } from '../../data/contact';
+import SectionDivider from '../shared/SectionDivider';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -18,7 +19,10 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="section-padding relative overflow-hidden bg-[#0f1117]">
+    <>
+    <SectionDivider variant="light-to-dark" />
+    
+    <section id="contact" className="section-padding relative overflow-hidden bg-bg-light text-text-dark">
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -234,5 +238,6 @@ export default function Contact() {
         </div>
       </div>
     </section>
+    </>
   );
 }
