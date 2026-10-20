@@ -26,11 +26,11 @@ export default function Contact() {
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <p className="text-accent-light text-sm font-mono tracking-wider mb-2">NETWORK // CONNECTION</p>
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-4">
+          <p className="text-accent-primary text-sm font-mono tracking-wider mb-2">NETWORK // CONNECTION</p>
+          <h2 className="text-5xl md:text-6xl font-bold text-text-dark mb-4">
             Let's Build <span className="text-gradient">Connection</span>
           </h2>
-          <p className="text-[#cbd5e1] text-xl max-w-3xl mx-auto">
+          <p className="text-text-dark-muted text-xl max-w-3xl mx-auto">
             Open for architecture discussions, high-scale projects, and fintech/payments system collaboration.
           </p>
         </div>
@@ -40,16 +40,16 @@ export default function Contact() {
           {/* Direct Email */}
           <a 
             href={`mailto:${contact.email}`}
-            className="bg-[#1a2332] border border-slate-800 rounded-lg p-4 hover:border-accent-primary/50 transition-all"
+            className="bg-white border border-slate-300 rounded-lg p-4 hover:border-accent-primary/50 transition-all hover:shadow-lg"
           >
             <div className="flex items-start gap-3">
-              <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400 flex-shrink-0">
+              <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-600 flex-shrink-0">
                 ✉️
               </div>
               <div className="min-w-0">
-                <p className="text-white font-semibold text-sm">Direct Email</p>
-                <p className="text-slate-500 text-xs font-mono">Response &lt; 12 hrs</p>
-                <p className="text-cyan-400 text-xs mt-1 break-all">{contact.email}</p>
+                <p className="text-text-dark font-semibold text-sm">Direct Email</p>
+                <p className="text-text-dark-muted text-xs font-mono">Response &lt; 12 hrs</p>
+                <p className="text-accent-primary text-xs mt-1 break-all">{contact.email}</p>
               </div>
             </div>
           </a>
@@ -57,30 +57,30 @@ export default function Contact() {
           {/* Phone/WhatsApp */}
           <a 
             href={`tel:${contact.phone}`}
-            className="bg-[#1a2332] border border-slate-800 rounded-lg p-4 hover:border-accent-primary/50 transition-all"
+            className="bg-white border border-slate-300 rounded-lg p-4 hover:border-accent-primary/50 transition-all hover:shadow-lg"
           >
             <div className="flex items-start gap-3">
-              <div className="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400 flex-shrink-0">
+              <div className="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-600 flex-shrink-0">
                 📱
               </div>
               <div className="min-w-0">
-                <p className="text-white font-semibold text-sm">Phone/WhatsApp</p>
-                <p className="text-slate-500 text-xs font-mono">Jakarta (UTC+7)</p>
-                <p className="text-cyan-400 text-xs mt-1">{contact.phone}</p>
+                <p className="text-text-dark font-semibold text-sm">Phone/WhatsApp</p>
+                <p className="text-text-dark-muted text-xs font-mono">Jakarta (UTC+7)</p>
+                <p className="text-accent-primary text-xs mt-1">{contact.phone}</p>
               </div>
             </div>
           </a>
 
           {/* Location */}
-          <div className="bg-[#1a2332] border border-slate-800 rounded-lg p-4">
+          <div className="bg-white border border-slate-300 rounded-lg p-4">
             <div className="flex items-start gap-3">
-              <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-400 flex-shrink-0">
+              <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-600 flex-shrink-0">
                 📍
               </div>
               <div className="min-w-0">
-                <p className="text-white font-semibold text-sm">Location</p>
-                <p className="text-slate-500 text-xs font-mono">On-site & Global Remote</p>
-                <p className="text-slate-400 text-xs mt-1">{contact.location}</p>
+                <p className="text-text-dark font-semibold text-sm">Location</p>
+                <p className="text-text-dark-muted text-xs font-mono">On-site & Global Remote</p>
+                <p className="text-text-dark-muted text-xs mt-1">{contact.location}</p>
               </div>
             </div>
           </div>
@@ -90,16 +90,16 @@ export default function Contact() {
             href={contact.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#1a2332] border border-slate-800 rounded-lg p-4 hover:border-accent-primary/50 transition-all"
+            className="bg-white border border-slate-300 rounded-lg p-4 hover:border-accent-primary/50 transition-all hover:shadow-lg"
           >
             <div className="flex items-start gap-3">
-              <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400 flex-shrink-0">
+              <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-600 flex-shrink-0">
                 💼
               </div>
               <div className="min-w-0">
-                <p className="text-white font-semibold text-sm">LinkedIn</p>
-                <p className="text-slate-500 text-xs font-mono">// NETWORK</p>
-                <p className="text-cyan-400 text-xs mt-1">16+ Repos</p>
+                <p className="text-text-dark font-semibold text-sm">LinkedIn</p>
+                <p className="text-text-dark-muted text-xs font-mono">// NETWORK</p>
+                <p className="text-accent-primary text-xs mt-1">16+ Repos</p>
               </div>
             </div>
           </a>
@@ -110,16 +110,16 @@ export default function Contact() {
               href={contact.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#1a2332] border border-slate-800 rounded-lg p-4 hover:border-accent-primary/50 transition-all"
+              className="bg-white border border-slate-300 rounded-lg p-4 hover:border-accent-primary/50 transition-all hover:shadow-lg"
             >
               <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-lg bg-slate-500/20 flex items-center justify-center text-slate-300 flex-shrink-0">
+                <div className="w-10 h-10 rounded-lg bg-slate-500/20 flex items-center justify-center text-slate-600 flex-shrink-0">
                   🔗
                 </div>
                 <div className="min-w-0">
-                  <p className="text-white font-semibold text-sm">GitHub</p>
-                  <p className="text-slate-500 text-xs font-mono">// PORTFOLIO</p>
-                  <p className="text-slate-400 text-xs mt-1">Public repos</p>
+                  <p className="text-text-dark font-semibold text-sm">GitHub</p>
+                  <p className="text-text-dark-muted text-xs font-mono">// PORTFOLIO</p>
+                  <p className="text-text-dark-muted text-xs mt-1">Public repos</p>
                 </div>
               </div>
             </a>
@@ -128,44 +128,44 @@ export default function Contact() {
 
         {/* Inquiry Form */}
         <div className="max-w-3xl mx-auto">
-          <div className="glass-card rounded-xl p-8 border border-accent-primary/20">
+          <div className="bg-white border border-slate-300 rounded-xl p-8 shadow-lg">
             <div className="mb-6">
-              <p className="text-accent-light text-xs font-mono tracking-wider mb-2">// ARCHITECTURE INQUIRY</p>
-              <h3 className="text-2xl font-bold text-white">Send Architecture Proposal</h3>
+              <p className="text-accent-primary text-xs font-mono tracking-wider mb-2">// ARCHITECTURE INQUIRY</p>
+              <h3 className="text-2xl font-bold text-text-dark">Send Architecture Proposal</h3>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               {/* Name & Email Row */}
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">Full Name</label>
+                  <label className="block text-sm font-medium text-text-dark mb-2">Full Name</label>
                   <input 
                     type="text"
                     placeholder="Your name"
                     value={formData.name}
                     onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    className="w-full bg-[#0a0e1a] border border-slate-800 rounded-lg px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-accent-primary transition-colors"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-lg px-4 py-2.5 text-text-dark placeholder-slate-400 focus:outline-none focus:border-accent-primary transition-colors"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">Email Address</label>
+                  <label className="block text-sm font-medium text-text-dark mb-2">Email Address</label>
                   <input 
                     type="email"
                     placeholder="your@email.com"
                     value={formData.email}
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="w-full bg-[#0a0e1a] border border-slate-800 rounded-lg px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-accent-primary transition-colors"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-lg px-4 py-2.5 text-text-dark placeholder-slate-400 focus:outline-none focus:border-accent-primary transition-colors"
                   />
                 </div>
               </div>
 
               {/* System Domain Dropdown */}
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-2">System Domain</label>
+                <label className="block text-sm font-medium text-text-dark mb-2">System Domain</label>
                 <select 
                   value={formData.domain}
                   onChange={(e) => setFormData({...formData, domain: e.target.value})}
-                  className="w-full bg-[#0a0e1a] border border-slate-800 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-accent-primary transition-colors"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-lg px-4 py-2.5 text-text-dark focus:outline-none focus:border-accent-primary transition-colors"
                 >
                   <option value="fintech-payments">High-Throughput Fintech & Payments</option>
                   <option value="core-banking">Core Banking Infrastructure</option>
@@ -177,37 +177,37 @@ export default function Contact() {
 
               {/* Message */}
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-2">Message / Requirements</label>
+                <label className="block text-sm font-medium text-text-dark mb-2">Message / Requirements</label>
                 <textarea 
                   placeholder="Describe your project, challenges, or architecture needs..."
                   rows={6}
                   value={formData.message}
                   onChange={(e) => setFormData({...formData, message: e.target.value})}
-                  className="w-full bg-[#0a0e1a] border border-slate-800 rounded-lg px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-accent-primary transition-colors resize-none"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-lg px-4 py-2.5 text-text-dark placeholder-slate-400 focus:outline-none focus:border-accent-primary transition-colors resize-none"
                 ></textarea>
               </div>
 
               {/* Security Badge */}
-              <div className="p-3 bg-[#1a2332] rounded-lg border border-slate-800 text-xs text-slate-400 flex items-start gap-2">
-                <span className="text-emerald-400 mt-0.5">🔒</span>
-                <span><span className="text-white font-medium">CONFIDENTIAL DISCUSSIONS</span> - NDA & IP Protection respected by default</span>
+              <div className="p-3 bg-slate-100 rounded-lg border border-slate-300 text-xs text-text-dark-muted flex items-start gap-2">
+                <span className="text-emerald-600 mt-0.5">🔒</span>
+                <span><span className="text-text-dark font-medium">CONFIDENTIAL DISCUSSIONS</span> - NDA & IP Protection respected by default</span>
               </div>
 
               {/* Status & CTA */}
               <div className="flex items-center justify-between pt-2">
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                  <p className="text-slate-500 text-xs font-mono">STATUS: READY_TO_TRANSMIT</p>
+                  <div className="w-2 h-2 bg-emerald-600 rounded-full animate-pulse"></div>
+                  <p className="text-text-dark-muted text-xs font-mono">STATUS: READY_TO_TRANSMIT</p>
                 </div>
               </div>
 
               {/* Schedule Meeting Checkbox */}
-              <label className="flex items-center gap-3 p-3 bg-[#1a2332] rounded-lg border border-slate-800 cursor-pointer hover:border-accent-primary/30 transition-colors">
+              <label className="flex items-center gap-3 p-3 bg-slate-100 rounded-lg border border-slate-300 cursor-pointer hover:border-accent-primary/30 transition-colors">
                 <input 
                   type="checkbox"
-                  className="w-4 h-4 rounded bg-[#0a0e1a] border border-slate-700 accent-accent-primary"
+                  className="w-4 h-4 rounded bg-white border border-slate-300 accent-accent-primary"
                 />
-                <span className="text-slate-300 text-sm">Schedule Architecture Sync (Google Meet)</span>
+                <span className="text-text-dark-muted text-sm">Schedule Architecture Sync (Google Meet)</span>
               </label>
 
               {/* Submit Button */}
@@ -223,15 +223,15 @@ export default function Contact() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-16 pt-12 border-t border-slate-800 text-center">
-          <p className="text-slate-400 text-sm mb-6">
+        <div className="mt-16 pt-12 border-t border-slate-300 text-center">
+          <p className="text-text-dark-muted text-sm mb-6">
             Prefer a quick call? Let's discuss your architecture needs directly.
           </p>
           <a 
             href={`https://calendly.com/yunrizal`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-8 py-3 bg-[#1a2332] hover:bg-[#1e293b] text-white font-semibold rounded-lg border border-slate-700 transition-all"
+            className="inline-block px-8 py-3 bg-slate-100 hover:bg-slate-200 text-text-dark font-semibold rounded-lg border border-slate-300 transition-all"
           >
             Schedule Engineering Call
           </a>
