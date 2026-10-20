@@ -1,74 +1,207 @@
 // src/components/sections/About.tsx
 
-import { profile } from '../../data/profile';
-import SectionDivider from '../shared/SectionDivider';
+import { profile } from "../../data/profile";
 
 export default function About() {
-  const { bio } = profile;
+    return (
+        <section id="about" className="section-padding relative overflow-hidden bg-[#0f1117]">
+            <div className="container-custom">
+                <div className="grid lg:grid-cols-[60%_38%] gap-12">
+                    {/* Left Column: Content */}
+                    <div className="space-y-8">
+                        {/* Section Header */}
+                        <div>
+                            <p className="text-accent-light text-sm font-mono tracking-wider mb-2">SYS_ARCH // BIO & PHILOSOPHY</p>
+                            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">About Me</h2>
+                            <p className="text-xl text-accent-primary font-semibold">
+                                Specializing in Core Banking & High-Throughput Payment Infrastructure
+                            </p>
+                        </div>
 
-  return (
-    <>
-      <SectionDivider variant="dark-to-light" />
-      
-      <section id="about" className="section-padding bg-bg-light text-text-dark">
-        <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Column: Portrait & Visual */}
-            <div className="flex flex-col items-center">
-              <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden light-card p-2 bg-gradient-to-tr from-accent-primary to-accent-light shadow-2xl">
-                <div className="w-full h-full rounded-full bg-slate-200 flex items-center justify-center overflow-hidden">
-                  <div className="text-8xl">👨‍💻</div>
+                        {/* Bio Paragraphs */}
+                        <div className="space-y-4 text-[#cbd5e1] text-base leading-relaxed">
+                            <p>
+                                I'm a <span className="text-white font-semibold">Backend Architect</span> with 3+ years of experience building 
+                                mission-critical financial systems. My expertise lies in designing and implementing high-throughput microservices 
+                                using <span className="font-mono text-cyan-400">Java 21</span>, <span className="font-mono text-cyan-400">Spring Boot</span>, and 
+                                distributed data systems like <span className="font-mono text-cyan-400">PostgreSQL</span>, <span className="font-mono text-cyan-400">Apache Kafka</span>, and <span className="font-mono text-cyan-400">Redis</span>.
+                            </p>
+                            <p>
+                                I architect resilient backend infrastructure that powers core banking platforms, payment gateways, 
+                                and settlement systems. My work emphasizes <span className="text-white font-semibold">transaction integrity</span>, 
+                                <span className="text-white font-semibold"> low-latency APIs</span>, and <span className="text-white font-semibold">observability</span> through 
+                                tools like OpenTelemetry, Prometheus, and Grafana.
+                            </p>
+                            <p>
+                                From ACID-compliant ledgers to event-driven architectures, I ensure systems are production-ready, 
+                                scalable, and maintainable. I thrive in cross-functional teams, translating complex business requirements 
+                                into clean, testable code that delivers real impact.
+                            </p>
+                        </div>
+
+                        {/* Philosophy Quote */}
+                        <div className="border-l-4 border-accent-primary bg-[#1a2332] p-6 rounded-r-xl">
+                            <p className="text-white text-lg italic mb-2">"{profile.quote}"</p>
+                            <p className="text-slate-500 text-sm">— Personal Engineering Doctrine</p>
+                        </div>
+
+                        {/* Core Domains */}
+                        <div>
+                            <h3 className="text-white font-semibold text-lg mb-3">Core Domains</h3>
+                            <div className="flex flex-wrap gap-2">
+                                {[
+                                    'Financial Rails',
+                                    'Distributed Consensus',
+                                    'ACID Ledgers',
+                                    'Event Sourcing & CQRS',
+                                    'Zero-Trust Security',
+                                    'High Concurrency Tuning'
+                                ].map((domain) => (
+                                    <span key={domain} className="px-4 py-2 bg-[#1a2332] text-white text-sm font-medium rounded-full border border-slate-700">
+                                        {domain}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Education & Credentials */}
+                        <div className="space-y-4">
+                            <div>
+                                <h3 className="text-white font-semibold text-lg mb-3">Education</h3>
+                                <div className="flex items-start gap-3">
+                                    <div className="w-10 h-10 rounded-lg bg-accent-primary/20 flex items-center justify-center text-accent-primary flex-shrink-0">
+                                        🎓
+                                    </div>
+                                    <div>
+                                        <p className="text-white font-semibold">B.S. Computer Science</p>
+                                        <p className="text-slate-400 text-sm">Universitas Komputer Indonesia</p>
+                                        <span className="inline-block mt-1 px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-bold rounded">
+                                            1st Class Hons
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 className="text-white font-semibold text-lg mb-3">Professional Certifications</h3>
+                                <div className="grid gap-3">
+                                    {[
+                                        { name: 'Oracle Certified Professional: Java SE 17/21', badge: 'OCP', verified: true },
+                                        { name: 'Confluent Certified Developer for Apache Kafka', badge: 'CCDAK', verified: true },
+                                        { name: 'AWS Solutions Architect Associate', badge: 'AWS', verified: true },
+                                        { name: 'Spring Professional Engineer (VMware)', badge: 'Spring', verified: true }
+                                    ].map((cert) => (
+                                        <div key={cert.name} className="flex items-center gap-3 p-3 bg-[#1a2332] rounded-lg border border-slate-800">
+                                            <span className="px-2 py-1 bg-accent-primary/20 text-accent-primary text-xs font-bold rounded">
+                                                {cert.badge}
+                                            </span>
+                                            <p className="text-white text-sm flex-1">{cert.name}</p>
+                                            {cert.verified && (
+                                                <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                                                </svg>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Right Column: Profile Card */}
+                    <div className="lg:sticky lg:top-24 h-fit">
+                        <div className="glass-card rounded-2xl p-6 border border-accent-primary/20 space-y-6">
+                            {/* Profile Image */}
+                            <div className="relative">
+                                <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-accent-primary to-accent-light p-1">
+                                    <div className="w-full h-full rounded-full bg-[#1a2332] flex items-center justify-center text-4xl font-bold text-white">
+                                        HY
+                                    </div>
+                                </div>
+                                
+                                {/* Status Badge */}
+                                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-3 py-1 bg-emerald-500 text-white text-xs font-bold rounded-full whitespace-nowrap">
+                                    ✓ AVAILABLE FOR LEAD ROLES
+                                </div>
+                            </div>
+
+                            {/* Name & Role */}
+                            <div className="text-center">
+                                <h3 className="text-xl font-bold text-white mb-1">{profile.name}</h3>
+                                <p className="text-slate-400 text-sm">Senior Backend Engineer</p>
+                            </div>
+
+                            {/* Key Metrics */}
+                            <div className="grid grid-cols-2 gap-3">
+                                <div className="bg-[#0a0e1a] rounded-lg p-3 border border-slate-800">
+                                    <p className="text-slate-500 text-xs mb-1">Uptime guarantee</p>
+                                    <p className="text-emerald-400 font-bold text-lg">99.99%+</p>
+                                    <p className="text-slate-600 text-xs">SLA</p>
+                                </div>
+                                <div className="bg-[#0a0e1a] rounded-lg p-3 border border-slate-800">
+                                    <p className="text-slate-500 text-xs mb-1">Target runtime</p>
+                                    <p className="text-cyan-400 font-bold text-lg">JVM 21</p>
+                                    <p className="text-slate-600 text-xs">(LTS)</p>
+                                </div>
+                            </div>
+
+                            {/* Visual Stats */}
+                            <div className="space-y-3">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400">
+                                        💼
+                                    </div>
+                                    <div className="flex-1">
+                                        <p className="text-white font-semibold text-sm">3+ years</p>
+                                        <p className="text-slate-500 text-xs">Core banking experience</p>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-center gap-3">
+                                    <div className="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400">
+                                        🤝
+                                    </div>
+                                    <div className="flex-1">
+                                        <p className="text-white font-semibold text-sm">5+ partners</p>
+                                        <p className="text-slate-500 text-xs">Enterprise clients</p>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-center gap-3">
+                                    <div className="w-8 h-8 rounded-lg bg-cyan-500/20 flex items-center justify-center text-cyan-400">
+                                        🚀
+                                    </div>
+                                    <div className="flex-1">
+                                        <p className="text-white font-semibold text-sm">15+ systems</p>
+                                        <p className="text-slate-500 text-xs">Shipped to production</p>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-center gap-3">
+                                    <div className="w-8 h-8 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-400">
+                                        ⚙️
+                                    </div>
+                                    <div className="flex-1">
+                                        <p className="text-white font-semibold text-sm">PROD</p>
+                                        <p className="text-slate-500 text-xs">Environment ready</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* CTAs */}
+                            <div className="space-y-2 pt-4 border-t border-slate-800">
+                                <button className="w-full py-2.5 bg-accent-primary hover:bg-accent-hover text-white font-semibold rounded-lg transition-colors">
+                                    Engineering Resume (PDF)
+                                </button>
+                                <button className="w-full py-2.5 bg-[#1a2332] hover:bg-[#1e293b] text-white font-medium rounded-lg border border-slate-700 transition-colors flex items-center justify-center gap-2">
+                                    <span>💬</span>
+                                    Technical Discussion
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-accent-primary text-sm font-medium">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                Available for New Projects
-              </div>
             </div>
-
-            {/* Right Column: Content */}
-            <div className="space-y-6">
-              <span className="px-3 py-1 rounded-full bg-blue-100 text-accent-primary text-xs font-semibold tracking-wider uppercase">
-                About Me
-              </span>
-              
-              <h2 className="text-3xl md:text-4xl font-bold font-serif leading-tight">
-                Code is my medium. <span className="text-accent-primary italic">Reliability is my superpower.</span>
-              </h2>
-              
-              {bio.map((paragraph, idx) => (
-                <p key={idx} className="text-text-dark-muted text-base md:text-lg leading-relaxed">
-                  {paragraph}
-                </p>
-              ))}
-              
-              {/* Stats Row */}
-              <div className="grid grid-cols-3 gap-4 pt-6 border-t border-border-light">
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-100">
-                  <div className="text-2xl md:text-3xl font-bold text-accent-primary mb-1">
-                    {profile.stats.yearsExperience}
-                  </div>
-                  <p className="text-text-dark-muted text-xs md:text-sm">Years Experience</p>
-                </div>
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-100">
-                  <div className="text-2xl md:text-3xl font-bold text-accent-primary mb-1">
-                    {profile.stats.clientsCount}
-                  </div>
-                  <p className="text-text-dark-muted text-xs md:text-sm">Clients</p>
-                </div>
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-100">
-                  <div className="text-2xl md:text-3xl font-bold text-accent-primary mb-1">
-                    {profile.stats.projectsCount}
-                  </div>
-                  <p className="text-text-dark-muted text-xs md:text-sm">Projects</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <SectionDivider variant="light-to-dark" />
-    </>
-  );
+        </section>
+    );
 }

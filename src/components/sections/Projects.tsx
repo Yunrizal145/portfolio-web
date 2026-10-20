@@ -2,63 +2,8 @@
 
 import { useState } from 'react';
 import { projects } from '../../data/projects';
-import { Button, Modal } from '../ui';
+import { Modal } from '../ui';
 import type { Project } from '../../data/projects';
-
-function ProjectCard({ project, onClick }: { project: Project; onClick: () => void }) {
-  return (
-    <div 
-      className="glass-card rounded-2xl overflow-hidden cursor-pointer group transition-all duration-300 flex flex-col justify-between"
-      onClick={onClick}
-    >
-      {/* Project Banner / Thumbnail */}
-      <div className="aspect-video bg-gradient-to-br from-blue-900/40 to-slate-900 relative overflow-hidden flex items-center justify-center border-b border-border-subtle">
-        <div className="text-6xl group-hover:scale-110 transition-transform duration-300">🏦</div>
-        
-        <div className="absolute inset-0 bg-accent-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-          <span className="px-4 py-2 rounded-lg bg-white text-accent-primary font-bold text-sm shadow-lg">
-            View Details →
-          </span>
-        </div>
-
-        {project.featured && (
-          <span className="absolute top-3 right-3 px-3 py-1 rounded-full bg-accent-primary text-white text-xs font-semibold shadow">
-            Featured
-          </span>
-        )}
-      </div>
-
-      {/* Content */}
-      <div className="p-6 space-y-4">
-        <div className="flex items-center justify-between">
-          <span className="text-xs font-mono text-accent-light">{project.year}</span>
-        </div>
-
-        <h3 className="text-xl font-bold group-hover:text-accent-light transition-colors">
-          {project.title}
-        </h3>
-
-        <p className="text-text-secondary text-sm line-clamp-2 leading-relaxed">
-          {project.shortDescription}
-        </p>
-
-        {/* Tech Stack badges */}
-        <div className="flex flex-wrap gap-2 pt-2">
-          {project.technologies.slice(0, 3).map((tech) => (
-            <span key={tech} className="px-2.5 py-1 rounded-md bg-bg-tertiary text-text-secondary text-xs font-medium">
-              {tech}
-            </span>
-          ))}
-          {project.technologies.length > 3 && (
-            <span className="px-2.5 py-1 rounded-md bg-bg-tertiary text-text-muted text-xs">
-              +{project.technologies.length - 3}
-            </span>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 function ProjectDetail({ project }: { project: Project }) {
   return (
@@ -112,47 +57,115 @@ function ProjectDetail({ project }: { project: Project }) {
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [showAll, setShowAll] = useState(false);
-
-  const featuredProjects = projects.filter(p => p.featured).slice(0, 4);
-  const displayProjects = showAll ? projects : featuredProjects;
 
   return (
-    <section id="projects" className="section-padding bg-bg-primary relative">
+    <section id="projects" className="section-padding relative overflow-hidden bg-[#0f1117]">
       <div className="container-custom">
-        <div className="text-center mb-16">
-          <span className="px-3.5 py-1.5 rounded-full glass-card text-xs font-semibold tracking-wider text-accent-light uppercase">
-            Portfolio Showcase
-          </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold mt-4 mb-4">Featured Works</h2>
-          <p className="text-text-secondary text-base md:text-lg max-w-2xl mx-auto font-light">
-            Solusi digital dan distributed system berstandar tinggi yang telah diimplementasikan.
+        {/* Section Header */}
+        <div className="mb-12">
+          <p className="text-accent-light text-sm font-mono tracking-wider mb-2">PORTFOLIO // SHOWCASE</p>
+          <h2 className="text-5xl md:text-6xl font-bold text-white mb-4">Work Experience & Career Timeline</h2>
+          <p className="text-[#cbd5e1] text-xl max-w-3xl">
+            Mission-critical projects delivering real impact across banking and enterprise infrastructure.
           </p>
         </div>
 
-        {/* Grid */}
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          {displayProjects.map((project) => (
-            <ProjectCard 
-              key={project.id}
-              project={project}
-              onClick={() => setSelectedProject(project)}
-            />
-          ))}
+        {/* Timeline with Alternating Cards */}
+        <div className="relative max-w-5xl mx-auto">
+          {/* Vertical Timeline Line */}
+          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-500 via-blue-500 to-blue-500/20 transform md:-translate-x-1/2"></div>
+
+          <div className="space-y-20">
+            {projects.map((project, index) => {
+              const isEven = index % 2 === 0;
+              
+              return (
+                <div 
+                  key={project.id} 
+                  className={`relative flex flex-col md:flex-row gap-8 ${isEven ? 'md:flex-row-reverse' : ''}`}
+                >
+                  {/* Timeline Node */}
+                  <div className="absolute left-0 md:left-1/2 transform -translate-x-1/2 flex flex-col items-center">
+                    <div className="w-4 h-4 rounded-full bg-blue-500 border-4 border-[#0f1117] z-10"></div>
+                  </div>
+
+                  {/* Content Card */}
+                  <div className={`w-full md:w-1/2 pl-8 md:pl-0 ${isEven ? 'md:pr-12' : 'md:pl-12'}`}>
+                    <div 
+                      className="bg-[#1a2332] border border-slate-800 rounded-xl p-6 hover:border-accent-primary/40 transition-all cursor-pointer"
+                      onClick={() => setSelectedProject(project)}
+                    >
+                      {/* Header with Date */}
+                      <div className="flex items-start justify-between mb-4">
+                        <div>
+                          <span className="inline-block px-2 py-1 bg-blue-500/20 text-blue-400 text-xs font-bold rounded mb-2">
+                            {project.year}
+                          </span>
+                          <p className="text-slate-500 text-xs font-mono">Banking Project</p>
+                        </div>
+                        {project.featured && (
+                          <span className="px-2 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-bold rounded">
+                            Featured
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Title */}
+                      <h3 className="text-2xl font-bold text-white mb-2 hover:text-cyan-400 transition-colors">
+                        {project.title}
+                      </h3>
+
+                      {/* Quote/Description */}
+                      <p className="text-slate-400 text-sm italic mb-4 border-l-2 border-blue-500/50 pl-3">
+                        "{project.shortDescription}"
+                      </p>
+
+                      {/* Highlights */}
+                      <div className="space-y-2 mb-5">
+                        {project.highlights.map((item, idx) => (
+                          <div key={idx} className="flex items-start gap-2">
+                            <span className="text-cyan-400 text-xs mt-1">▪</span>
+                            <p className="text-slate-300 text-sm leading-relaxed">{item}</p>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Tech Stack */}
+                      <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-800">
+                        {project.technologies.map((tech) => (
+                          <span 
+                            key={tech} 
+                            className="px-3 py-1 bg-[#0a0e1a] text-slate-300 text-xs font-medium rounded border border-slate-800"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* View Details Button */}
+                      <button className="mt-4 w-full py-2 bg-accent-primary/10 hover:bg-accent-primary/20 text-cyan-400 text-sm font-medium rounded-lg border border-accent-primary/30 transition-all">
+                        View Full Details →
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Empty space for alternating layout */}
+                  <div className="hidden md:block w-1/2"></div>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
-        {/* View All Button */}
-        {projects.length > 4 && !showAll && (
-          <div className="text-center">
-            <Button 
-              variant="secondary"
-              onClick={() => setShowAll(true)}
-              className="border-accent-primary text-accent-light hover:bg-accent-primary hover:text-white"
-            >
-              Explore All Projects ({projects.length})
-            </Button>
-          </div>
-        )}
+        {/* CTA */}
+        <div className="mt-20 pt-12 border-t border-slate-800 text-center">
+          <p className="text-slate-400 text-sm mb-6">
+            Explore more about these implementations or discuss your project needs.
+          </p>
+          <button className="px-8 py-3 bg-accent-primary hover:bg-accent-hover text-white font-semibold rounded-lg shadow-lg shadow-blue-500/25 transition-all">
+            Let's Build Something Great
+          </button>
+        </div>
       </div>
 
       {/* Modal */}
